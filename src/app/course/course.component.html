@@ -1,7 +1,36 @@
+<h2>{{title}}</h2>
 <p>course works!</p>
-<h2>Title : {{getTitle()}}</h2>
+<!-- <img src="/src/assets/eagle.jpg"/> -->
 <ul>
     <li *ngFor="let course of courses">
         {{course}}
     </li>
 </ul>
+
+<div (click)="onDivClicked()">
+<button class="btn btn-primary" (click) = "onSave($event)">Save</button>
+</div>
+<br>
+<!-- <input #email (keyup.enter) = "onKeyUp(email.value)" /> -->
+<button class="btn btn-primary" [class.active]="isActive">Submit</button>
+<br>
+<button type="button" class="btn btn-primary" [class.active]="isActive">Primary</button>
+<button type="button" [style.backgroundColor]="isActive ? 'red' : 'white' " >Secondary</button>
+<br>
+<!-- Two way binding  -->
+<!-- <input (keyup.enter)="onKeyUp($event)" /> -->
+<!-- <input #email  (keyup.enter)="onKeyUp(email.value)" /> -->
+<!-- <input [value]="email"  (keyup.enter)="email = $event.target.value; onKeyUp()" /> -->
+<input [(ngModel)] = "email" (keyup.enter)="onKeyUp()">
+
+<p>{{course.title | uppercase | lowercase}}</p>
+<p>{{course.students | number}}</p>
+<p>{{course.rating | number : '1.1-1'}}</p>
+<p>{{course.price | currency : 'AUD':true:'3.2-2'}}</p>
+<p>{{course.releaseDate | date:'shortDate'}}</p>
+
+<p>Star-empty icon on a styled link button:
+    <a href="#" class="btn btn-info btn-lg">
+      <span class="glyphicon glyphicon-star-empty"></span> Star
+    </a>
+  </p>
